@@ -1,6 +1,6 @@
 ---
 resource_types:
-  - name: gcs-resource
+  - name: google-cloud-storage
     type: docker-image
     source:
       repository: frodenas/gcs-resource
@@ -29,7 +29,7 @@ resources:
                 }
 
   - name: candidate-release
-    type: gcs−resource
+    type: google-cloud-storage
     source:
       bucket: {{gcs-bucket-release-candidates}}
       regexp: demo-(.*).jar
@@ -48,7 +48,7 @@ resources:
                 }
 
   - name: final-release
-    type: gcs−resource
+    type: google-cloud-storage
     source:
       bucket: {{gcs-bucket-releases}}
       regexp: demo-(.*).jar
@@ -92,10 +92,8 @@ jobs:
     plan:
       - get: pcfdemoapp
         trigger: true
-      # - task: unit
-      #   file: pcfdemoapp/ci/tasks/unit.yml
-      - put: candidate-release
-        params: { file: build/demo-*.jar }
+      - task: unit
+        file: pcfdemoapp/ci/tasks/unit.yml
 
   - name: build-artifact
     serial_groups: [ version ]
