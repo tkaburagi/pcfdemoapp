@@ -74,3 +74,5 @@ pwd
 ls -ltr makemanifest
 
 rm $inputDir/pcfdemoapp.jar
+
+ls -ltrR
