@@ -69,7 +69,7 @@ outputManifest=$outputDir/manifest-production.yml
 cp $inputManifest $outputManifest
 
 # the path in the manifest is always relative to the manifest itself
-sed -i -- "s|path: .*$|path: pcfdemoapp-${versionFile}.jar|g" $outputManifest
+sed -i -- "s|path: .*$|path: pcfdemoapp-`${versionFile}`.jar|g" $outputManifest
 
 if [ ! -z "$hostname" ]; then
   sed -i "s|host: .*$|host: ${hostname}|g" $outputManifest

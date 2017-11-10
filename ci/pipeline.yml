@@ -174,7 +174,7 @@ jobs:
       - task: prepare-final
         file: pcfdemoapp/ci/tasks/prepare-final.yml
       - put: final-release
-        params: { file: prepare-final/pcfdemoapp.jar }
+        params: { file: prepare-final/pcfdemoapp-*.jar }
       - put: version
         params: { file: version/number }      
 
