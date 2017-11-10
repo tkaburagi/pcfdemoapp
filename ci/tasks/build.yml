@@ -1,0 +1,28 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: java
+    tag: '8'
+
+inputs:
+  - name: pcfdemo
+  - name: version
+
+caches:
+  - path: repo/m2
+
+outputs:
+  - name: build
+
+run:
+  path: pcfdemo/ci/tasks/build.sh
+  args: [
+    --input-dir, pcfdemoapp,
+    --output-dir, build,
+    --version-file, version/number,
+    --artifactId, demo,
+    --packaging, jar
+  ]

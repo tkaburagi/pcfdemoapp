@@ -1,0 +1,155 @@
+---
+resources:
+  - name: pcfdemoapp
+    type: git
+    source:
+      uri: {{github-uri}}
+      branch: {{github-branch}}
+
+  - name: version
+    type: semver
+    source:
+      bucket: {{gcs-bucket-version}}
+      initial_version: 1.0.0-rc.0
+      key: current-version
+      json_key: |
+                {
+                  "private_key_id": "36f2bff6408f87b21839b6be05fb1063fc1441fc",
+                  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC2orvxgiCxgvq3\np8jFDRJ52XSoPLR+XlUWYxGALarzz8Uf8qErHYpgOsXycOGhiAchv6hbirdqs71J\nNU0pt7i3PcQKyD0LQs+CMkEcPV1XU+T0IDCysHydSLrBfuF2Z5l45GpQJ3w8DXCO\nrj2JsYnanaNqVIWzdRkrCYcn6Mw9gZohCGT9SORkOyvBOAsZemNCuAU39HY5RXuU\nin+Vz8ZLhu0EKffQPFPwrE1xgnBpSvksVfnUCWypUZfMz099kl8makDhkaCZBpNE\nIx7rpPF7Sl621TnwYAf7AFTOixvIVVaiKuagIVEX9YqWS8hnKySLoCXMXYIrfJHj\nZCot4xoZAgMBAAECggEATPrfvAaM0DV0hweuHLyLTpfFT4oyy9boB2Ufgcb9+QFY\nxcQHgbxUUIZFXBCPUf4bf3KgvGEGOW/kN2DDkvNw5K+gm6jV7hKtk2OqRQRqfP4M\nEYgl7pNsGwGGUjuwPa+iJS4lz34tI8TIbiNsJccS43YxZIaWylLvlk/QS5aYy81I\nAKRD0pse2mOY2HLLgH9FJ2d656B26lemIz09oLMyCMw6nokrqXndB5svuSL5l2rC\nTOiSyV1W7GCZ0cQFkFk4bizLXsoOS8BEeNVmWlzzcvjGG4Dolr6OzJ6Up/RTptVe\n7M6JgAimig15jR1O/4lDUWUrBIirNJZEr7EzF1idxwKBgQDceIfK3puHDhJVyKVG\nfEk3gg5FFU7PxtNZVK7V96Hrx0PxmPrMQLnUpBW/+HeFnn2t/wE2f2FAMG1dDNti\ng4d6ATYJ3eXngtyTKZ6KRRhZ762QPrNExbhhKrVMhrnxMMZd0SD+zBE9Mld0S9pr\ng8qP2QuHnwOFb0AwchoFSnWPjwKBgQDUEVMBo4D26sEuflMltOVPhM7RSwbS6NeB\nlu+0Z+DE6zrm0bxD/QAEDlT0VFnT2zAuIZqyu7SVt10CuEyj4Ekec6Mauq99S22j\nEQZJVgakRTNqhYrjRQwbIMcObd6Ufpw41thZfRYQV0rN0X6N1fXOmWozk4FPwW0H\nFvXsXstn1wKBgBa824xhrvqbyepM+jatxMNTx3L6gplNMSjqYemxU2LEt04ob902\n47N5hMC6uGDwepfCT/a15mq/U9gf5lRfqk47573Ww8o/pc4Loc0y2RMVc/oHbWev\nWJe01uPglTa5yAuO8O82TqTYF0roM8uY2QBC6zx+etd9JMqaSfK3vi4jAoGAOYOR\nTYp4eX7lcaSVDE7pOg28wYpliWHYwK6cyAK8NOvPB7auJopBLNhuNe2ChzCU+o3m\nlL7PlSMruIcfUfqMGhQmkiM7YPHKBEWjvNP17StPbH5XUpfxVpInKkSl7wP/fnLW\nLj78cuYZxYQhnHoAtk1pPh+tHGJLHXcer0JuS/UCgYEA1DgikiQzLYRyICrK56C8\nYSZNQ2aB5YB6T6kgjcCn9gZfQ2a80tLq3lQsjOOsfcNA/wigyGmgeWFbDoHDQxUY\n7ABecPP9uT9mX86sMPPQu+3HYRgpxxojACmczz49gkPJ9ONVFIqVcbUCI8ngoV55\nkZ90tSajd41mTidS7DM9Eeo=\n-----END PRIVATE KEY-----\n",
+                  "client_email": "gcd-owner@fe-tkaburagi.iam.gserviceaccount.com",
+                  "client_id": "103706751692505011588",
+                  "type": "service_account"
+                }
+
+  - name: candidate-release
+    type: gcs−resource
+    source:
+      bucket: {{gcs-bucket-release-candidates}}
+      regexp: demo-(.*).jar
+      json_key: |
+                {
+                  "private_key_id": "36f2bff6408f87b21839b6be05fb1063fc1441fc",
+                  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC2orvxgiCxgvq3\np8jFDRJ52XSoPLR+XlUWYxGALarzz8Uf8qErHYpgOsXycOGhiAchv6hbirdqs71J\nNU0pt7i3PcQKyD0LQs+CMkEcPV1XU+T0IDCysHydSLrBfuF2Z5l45GpQJ3w8DXCO\nrj2JsYnanaNqVIWzdRkrCYcn6Mw9gZohCGT9SORkOyvBOAsZemNCuAU39HY5RXuU\nin+Vz8ZLhu0EKffQPFPwrE1xgnBpSvksVfnUCWypUZfMz099kl8makDhkaCZBpNE\nIx7rpPF7Sl621TnwYAf7AFTOixvIVVaiKuagIVEX9YqWS8hnKySLoCXMXYIrfJHj\nZCot4xoZAgMBAAECggEATPrfvAaM0DV0hweuHLyLTpfFT4oyy9boB2Ufgcb9+QFY\nxcQHgbxUUIZFXBCPUf4bf3KgvGEGOW/kN2DDkvNw5K+gm6jV7hKtk2OqRQRqfP4M\nEYgl7pNsGwGGUjuwPa+iJS4lz34tI8TIbiNsJccS43YxZIaWylLvlk/QS5aYy81I\nAKRD0pse2mOY2HLLgH9FJ2d656B26lemIz09oLMyCMw6nokrqXndB5svuSL5l2rC\nTOiSyV1W7GCZ0cQFkFk4bizLXsoOS8BEeNVmWlzzcvjGG4Dolr6OzJ6Up/RTptVe\n7M6JgAimig15jR1O/4lDUWUrBIirNJZEr7EzF1idxwKBgQDceIfK3puHDhJVyKVG\nfEk3gg5FFU7PxtNZVK7V96Hrx0PxmPrMQLnUpBW/+HeFnn2t/wE2f2FAMG1dDNti\ng4d6ATYJ3eXngtyTKZ6KRRhZ762QPrNExbhhKrVMhrnxMMZd0SD+zBE9Mld0S9pr\ng8qP2QuHnwOFb0AwchoFSnWPjwKBgQDUEVMBo4D26sEuflMltOVPhM7RSwbS6NeB\nlu+0Z+DE6zrm0bxD/QAEDlT0VFnT2zAuIZqyu7SVt10CuEyj4Ekec6Mauq99S22j\nEQZJVgakRTNqhYrjRQwbIMcObd6Ufpw41thZfRYQV0rN0X6N1fXOmWozk4FPwW0H\nFvXsXstn1wKBgBa824xhrvqbyepM+jatxMNTx3L6gplNMSjqYemxU2LEt04ob902\n47N5hMC6uGDwepfCT/a15mq/U9gf5lRfqk47573Ww8o/pc4Loc0y2RMVc/oHbWev\nWJe01uPglTa5yAuO8O82TqTYF0roM8uY2QBC6zx+etd9JMqaSfK3vi4jAoGAOYOR\nTYp4eX7lcaSVDE7pOg28wYpliWHYwK6cyAK8NOvPB7auJopBLNhuNe2ChzCU+o3m\nlL7PlSMruIcfUfqMGhQmkiM7YPHKBEWjvNP17StPbH5XUpfxVpInKkSl7wP/fnLW\nLj78cuYZxYQhnHoAtk1pPh+tHGJLHXcer0JuS/UCgYEA1DgikiQzLYRyICrK56C8\nYSZNQ2aB5YB6T6kgjcCn9gZfQ2a80tLq3lQsjOOsfcNA/wigyGmgeWFbDoHDQxUY\n7ABecPP9uT9mX86sMPPQu+3HYRgpxxojACmczz49gkPJ9ONVFIqVcbUCI8ngoV55\nkZ90tSajd41mTidS7DM9Eeo=\n-----END PRIVATE KEY-----\n",
+                  "client_email": "gcd-owner@fe-tkaburagi.iam.gserviceaccount.com",
+                  "client_id": "103706751692505011588",
+                  "type": "service_account"
+                }
+
+  - name: final-release
+    type: gcs−resource
+    source:
+      bucket: {{gcs-bucket-releases}}
+      regexp: demo-(.*).jar
+      json_key: |
+                {
+                  "private_key_id": "36f2bff6408f87b21839b6be05fb1063fc1441fc",
+                  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC2orvxgiCxgvq3\np8jFDRJ52XSoPLR+XlUWYxGALarzz8Uf8qErHYpgOsXycOGhiAchv6hbirdqs71J\nNU0pt7i3PcQKyD0LQs+CMkEcPV1XU+T0IDCysHydSLrBfuF2Z5l45GpQJ3w8DXCO\nrj2JsYnanaNqVIWzdRkrCYcn6Mw9gZohCGT9SORkOyvBOAsZemNCuAU39HY5RXuU\nin+Vz8ZLhu0EKffQPFPwrE1xgnBpSvksVfnUCWypUZfMz099kl8makDhkaCZBpNE\nIx7rpPF7Sl621TnwYAf7AFTOixvIVVaiKuagIVEX9YqWS8hnKySLoCXMXYIrfJHj\nZCot4xoZAgMBAAECggEATPrfvAaM0DV0hweuHLyLTpfFT4oyy9boB2Ufgcb9+QFY\nxcQHgbxUUIZFXBCPUf4bf3KgvGEGOW/kN2DDkvNw5K+gm6jV7hKtk2OqRQRqfP4M\nEYgl7pNsGwGGUjuwPa+iJS4lz34tI8TIbiNsJccS43YxZIaWylLvlk/QS5aYy81I\nAKRD0pse2mOY2HLLgH9FJ2d656B26lemIz09oLMyCMw6nokrqXndB5svuSL5l2rC\nTOiSyV1W7GCZ0cQFkFk4bizLXsoOS8BEeNVmWlzzcvjGG4Dolr6OzJ6Up/RTptVe\n7M6JgAimig15jR1O/4lDUWUrBIirNJZEr7EzF1idxwKBgQDceIfK3puHDhJVyKVG\nfEk3gg5FFU7PxtNZVK7V96Hrx0PxmPrMQLnUpBW/+HeFnn2t/wE2f2FAMG1dDNti\ng4d6ATYJ3eXngtyTKZ6KRRhZ762QPrNExbhhKrVMhrnxMMZd0SD+zBE9Mld0S9pr\ng8qP2QuHnwOFb0AwchoFSnWPjwKBgQDUEVMBo4D26sEuflMltOVPhM7RSwbS6NeB\nlu+0Z+DE6zrm0bxD/QAEDlT0VFnT2zAuIZqyu7SVt10CuEyj4Ekec6Mauq99S22j\nEQZJVgakRTNqhYrjRQwbIMcObd6Ufpw41thZfRYQV0rN0X6N1fXOmWozk4FPwW0H\nFvXsXstn1wKBgBa824xhrvqbyepM+jatxMNTx3L6gplNMSjqYemxU2LEt04ob902\n47N5hMC6uGDwepfCT/a15mq/U9gf5lRfqk47573Ww8o/pc4Loc0y2RMVc/oHbWev\nWJe01uPglTa5yAuO8O82TqTYF0roM8uY2QBC6zx+etd9JMqaSfK3vi4jAoGAOYOR\nTYp4eX7lcaSVDE7pOg28wYpliWHYwK6cyAK8NOvPB7auJopBLNhuNe2ChzCU+o3m\nlL7PlSMruIcfUfqMGhQmkiM7YPHKBEWjvNP17StPbH5XUpfxVpInKkSl7wP/fnLW\nLj78cuYZxYQhnHoAtk1pPh+tHGJLHXcer0JuS/UCgYEA1DgikiQzLYRyICrK56C8\nYSZNQ2aB5YB6T6kgjcCn9gZfQ2a80tLq3lQsjOOsfcNA/wigyGmgeWFbDoHDQxUY\n7ABecPP9uT9mX86sMPPQu+3HYRgpxxojACmczz49gkPJ9ONVFIqVcbUCI8ngoV55\nkZ90tSajd41mTidS7DM9Eeo=\n-----END PRIVATE KEY-----\n",
+                  "client_email": "gcd-owner@fe-tkaburagi.iam.gserviceaccount.com",
+                  "client_id": "103706751692505011588",
+                  "type": "service_account"
+                }
+
+  - name: cf-staging
+    type: cf
+    source:
+      api: {{cf-api}}
+      username: {{cf-username}}
+      password: {{cf-password}}
+      organization: {{cf-org}}
+      space: {{cf-space-staging}}
+      skip_cert_check: true
+
+  - name: cf-production
+    type: cf
+    source:
+      api: {{cf-api}}
+      username: {{cf-username}}
+      password: {{cf-password}}
+      organization: {{cf-org}}
+      space: {{cf-space-prod}}
+      skip_cert_check: true
+
+jobs:
+  - name: unit-test
+    public: true
+    plan:
+      - get: pcfdemoapp
+        trigger: true
+      - task: unit
+        file: pcfdemoapp/ci/tasks/unit.yml
+
+  - name: build-artifact
+    serial_groups: [ version ]
+    plan:
+      - get: pcfdemoapp
+        passed: [ unit-test ]
+        trigger: true
+      - get: version
+        params: { pre: rc }
+      - task: build
+        file: pcfdemoapp/ci/tasks/build.yml
+      - put: candidate-release
+        params: { file: build/demo-*.jar }
+      - put: version
+        params: { file: version/number }
+
+  - name: integration-test
+    serial: true
+    plan:
+      - get: candidate-release
+        trigger: true
+        passed: [ build-artifact ]
+      - get: pcfdemoapp
+        passed: [ build-artifact ]
+      - get: version
+        passed: [ build-artifact ]
+      - task: prepare-integration
+        file: pcfdemoapp/ci/tasks/prepare-integration.yml
+        params:
+          CF_MANIFEST_HOST: {{cf-manifest-host}}
+      - put: cf-staging
+        params:
+          manifest: prepare-integration/manifest.yml
+      - task: integration
+        file: pcfdemoapp/ci/tasks/integration.yml
+
+  - name: ship-it
+    serial_groups: [ version ]
+    plan:
+      - get: candidate-release
+        passed: [ integration-test ]
+      - get: pcfdemoapp
+        passed: [ integration-test ]
+      - get: version
+        params: { bump: final }
+      - task: prepare-final
+        file: pcfdemoapp/ci/tasks/prepare-final.yml
+      - put: final-release
+        params: { file: prepare-final/demo-*.jar }
+      - put: version
+        params: { file: version/number }
+      - put: cf-production
+        params:
+          manifest:
+          current_app_name: 
+
+  - name: major
+    serial_groups: [ version ]
+    plan:
+      - put: version
+        params: { bump: major, pre: rc }
+
+  - name: minor
+    serial_groups: [ version ]
+    plan:
+      - put: version
+        params: { bump: minor, pre: rc }
+
+  - name: patch
+    serial_groups: [ version ]
+    plan:
+      - get: version
+        passed: [ ship-it ]
+        trigger: true
+      - put: version
+        params: { bump: patch, pre: rc }
