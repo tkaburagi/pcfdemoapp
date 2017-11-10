@@ -180,12 +180,15 @@ jobs:
         params: { file: version/number }      
 
   - name: promotion
+    serial: true
     plan:
       - get: final-release
         trigger: true
         passed: [ship-it]
       - get: pcfdemoapp
         passed: [ship-it]
+      - task: make-manifest
+        file: pcfdemoapp/ci/tasks/make-manifest.yml
       - put: cf-production
         params: 
           manifest: pcfdemoapp/manifest-production.yml
