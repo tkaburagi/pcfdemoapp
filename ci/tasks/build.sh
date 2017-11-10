@@ -60,12 +60,12 @@ cd $inputDir
 set -e
 rm -rf ~/.m2
 ln -fs $(pwd)/m2 ~/.m2
-./mvnw clean package -Pci -DversionNumber=$version
+# ./mvnw clean package -Pci -DversionNumber=$version
 
 ls -ltr target
 
-mv target/demo-1.0.0-BUILD-SNAPSHOT.jar target/$artifactName
+# mv target/demo-1.0.0-BUILD-SNAPSHOT.jar target/$artifactName
 
 # Copy war file to concourse output folder
 cd ..
-cp $inputDir/target/$artifactName $outputDir/$artifactName
+# cp $inputDir/target/$artifactName $outputDir/$artifactName
