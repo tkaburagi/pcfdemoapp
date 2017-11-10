@@ -131,7 +131,8 @@ jobs:
         passed: [ integration-test ]
         trigger: true
       - get: pcfdemoapp
-        passed: [ build-artifact ]
+        passed: [ integration-test ]
+        trigger: true
       - task: load-test
         config:
             platform: linux
@@ -202,7 +203,7 @@ jobs:
       - put: version
         params: { bump: minor, pre: rc }
 
-  - name: patch
+  - name: bump-version
     serial_groups: [ version ]
     plan:
       - get: version
