@@ -1,0 +1,12 @@
+---
+applications:
+- name: pcfdemoapp
+  memory: 1G
+  host: pcfdemoapp
+  domain: cfapps.io
+  instances: 1
+  path: target/demo-0.0.1-SNAPSHOT.jar
+#  buildpack: java_buildpack
+  env:
+   management.security.enabled: false
+   endpoints.shutdown.enabled: true
