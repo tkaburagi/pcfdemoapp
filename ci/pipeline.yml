@@ -92,8 +92,8 @@ jobs:
     plan:
       - get: pcfdemoapp
         trigger: true
-      - task: unit
-        file: pcfdemoapp/ci/tasks/unit.yml
+      # - task: unit
+      #   file: pcfdemoapp/ci/tasks/unit.yml
       - put: candidate-release
         params: { file: build/demo-*.jar }
 
