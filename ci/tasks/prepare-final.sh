@@ -89,5 +89,9 @@ if [ ! -z "$hostname" ]; then
 fi
 pwd
 cat $outputManifest
-mv $outputManifest prepare-final/$outputManifest
+mv $outputManifest prepare-final
 cat prepare-final/$outputManifest
+mv ${outputJar} prepare-final
+
+pwd
+ls -ltr prepare-final
