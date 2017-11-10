@@ -9,7 +9,6 @@ image_resource:
 
 inputs:
   - name: pcfdemoapp
-  - name: version
 
 outputs:
   - name: prepare-final
@@ -18,7 +17,6 @@ run:
   path: pcfdemoapp/ci/tasks/prepare-final.sh
   args: [
     --output-dir, makemanifest,
-    --version-file, version/number,
     --input-manifest, pcfdemoapp/manifest-production.yml,
     --artifactId, demo,
     --packaging, jar
