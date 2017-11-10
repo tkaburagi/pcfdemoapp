@@ -7,10 +7,6 @@ hostname=$CF_MANIFEST_HOST # default to env variable from pipeline
 
 while [ $# -gt 0 ]; do
   case $1 in
-    -i | --input-dir )
-      inputDir=$2
-      shift
-      ;;
     -o | --output-dir )
       outputDir=$2
       shift
@@ -27,10 +23,6 @@ while [ $# -gt 0 ]; do
       packaging=$2
       shift
       ;;
-    -n | --hostname )
-      hostname=$2
-      shift
-      ;;
     * )
       echo "Unrecognized option: $1" 1>&2
       exit 1
@@ -44,9 +36,6 @@ error_and_exit() {
   exit 1
 }
 
-if [ ! -d "$inputDir" ]; then
-  error_and_exit "missing input directory: $inputDir"
-fi
 if [ ! -d "$outputDir" ]; then
   error_and_exit "missing output directory: $outputDir"
 fi
