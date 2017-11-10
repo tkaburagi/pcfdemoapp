@@ -93,4 +93,6 @@ if [ ! -z "$hostname" ]; then
   sed -i "s|host: .*$|host: ${hostname}|g" $outputManifest
 fi
 
+pwd
+
 cat $outputManifest
