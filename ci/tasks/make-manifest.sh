@@ -62,7 +62,7 @@ fi
 if [ ! -f "$versionFile" ]; then
   error_and_exit "missing version file: $versionFile"
 fi
-cp $inputDir/pcfdemoapp.jar $outputDir/pcfdemoapp.jar
+cp $inputDir/pcfdemoapp-`${versionFile}`.jar $outputDir/pcfdemoapp-`${versionFile}`.jar
 
 outputManifest=$outputDir/manifest-production.yml
 
