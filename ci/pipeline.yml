@@ -54,11 +54,16 @@ resources:
       regexp: demo-(.*).jar
       json_key: |
                 {
+                  "type": "service_account",
+                  "project_id": "fe-tkaburagi",
                   "private_key_id": "36f2bff6408f87b21839b6be05fb1063fc1441fc",
                   "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC2orvxgiCxgvq3\np8jFDRJ52XSoPLR+XlUWYxGALarzz8Uf8qErHYpgOsXycOGhiAchv6hbirdqs71J\nNU0pt7i3PcQKyD0LQs+CMkEcPV1XU+T0IDCysHydSLrBfuF2Z5l45GpQJ3w8DXCO\nrj2JsYnanaNqVIWzdRkrCYcn6Mw9gZohCGT9SORkOyvBOAsZemNCuAU39HY5RXuU\nin+Vz8ZLhu0EKffQPFPwrE1xgnBpSvksVfnUCWypUZfMz099kl8makDhkaCZBpNE\nIx7rpPF7Sl621TnwYAf7AFTOixvIVVaiKuagIVEX9YqWS8hnKySLoCXMXYIrfJHj\nZCot4xoZAgMBAAECggEATPrfvAaM0DV0hweuHLyLTpfFT4oyy9boB2Ufgcb9+QFY\nxcQHgbxUUIZFXBCPUf4bf3KgvGEGOW/kN2DDkvNw5K+gm6jV7hKtk2OqRQRqfP4M\nEYgl7pNsGwGGUjuwPa+iJS4lz34tI8TIbiNsJccS43YxZIaWylLvlk/QS5aYy81I\nAKRD0pse2mOY2HLLgH9FJ2d656B26lemIz09oLMyCMw6nokrqXndB5svuSL5l2rC\nTOiSyV1W7GCZ0cQFkFk4bizLXsoOS8BEeNVmWlzzcvjGG4Dolr6OzJ6Up/RTptVe\n7M6JgAimig15jR1O/4lDUWUrBIirNJZEr7EzF1idxwKBgQDceIfK3puHDhJVyKVG\nfEk3gg5FFU7PxtNZVK7V96Hrx0PxmPrMQLnUpBW/+HeFnn2t/wE2f2FAMG1dDNti\ng4d6ATYJ3eXngtyTKZ6KRRhZ762QPrNExbhhKrVMhrnxMMZd0SD+zBE9Mld0S9pr\ng8qP2QuHnwOFb0AwchoFSnWPjwKBgQDUEVMBo4D26sEuflMltOVPhM7RSwbS6NeB\nlu+0Z+DE6zrm0bxD/QAEDlT0VFnT2zAuIZqyu7SVt10CuEyj4Ekec6Mauq99S22j\nEQZJVgakRTNqhYrjRQwbIMcObd6Ufpw41thZfRYQV0rN0X6N1fXOmWozk4FPwW0H\nFvXsXstn1wKBgBa824xhrvqbyepM+jatxMNTx3L6gplNMSjqYemxU2LEt04ob902\n47N5hMC6uGDwepfCT/a15mq/U9gf5lRfqk47573Ww8o/pc4Loc0y2RMVc/oHbWev\nWJe01uPglTa5yAuO8O82TqTYF0roM8uY2QBC6zx+etd9JMqaSfK3vi4jAoGAOYOR\nTYp4eX7lcaSVDE7pOg28wYpliWHYwK6cyAK8NOvPB7auJopBLNhuNe2ChzCU+o3m\nlL7PlSMruIcfUfqMGhQmkiM7YPHKBEWjvNP17StPbH5XUpfxVpInKkSl7wP/fnLW\nLj78cuYZxYQhnHoAtk1pPh+tHGJLHXcer0JuS/UCgYEA1DgikiQzLYRyICrK56C8\nYSZNQ2aB5YB6T6kgjcCn9gZfQ2a80tLq3lQsjOOsfcNA/wigyGmgeWFbDoHDQxUY\n7ABecPP9uT9mX86sMPPQu+3HYRgpxxojACmczz49gkPJ9ONVFIqVcbUCI8ngoV55\nkZ90tSajd41mTidS7DM9Eeo=\n-----END PRIVATE KEY-----\n",
                   "client_email": "gcd-owner@fe-tkaburagi.iam.gserviceaccount.com",
                   "client_id": "103706751692505011588",
-                  "type": "service_account"
+                  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+                  "token_uri": "https://accounts.google.com/o/oauth2/token",
+                  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+                  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/gcd-owner%40fe-tkaburagi.iam.gserviceaccount.com"
                 }
 
   - name: cf-staging
@@ -89,6 +94,8 @@ jobs:
         trigger: true
       - task: unit
         file: pcfdemoapp/ci/tasks/unit.yml
+      - put: candidate-release
+        params: { file: build/demo-*.jar }
 
   - name: build-artifact
     serial_groups: [ version ]
