@@ -64,6 +64,8 @@ ln -fs $(pwd)/m2 ~/.m2
 
 ls -ltr target
 
+mv target/demo-1.0.0-BUILD-SNAPSHOT.jar target/$artifactName
+
 # Copy war file to concourse output folder
 cd ..
 cp $inputDir/target/$artifactName $outputDir/$artifactName
