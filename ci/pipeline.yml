@@ -45,7 +45,7 @@ resources:
     type: google-cloud-storage
     source:
       bucket: {{gcs-bucket-releases}}
-      regexp: demo-(.*).jar
+      regexp: pcfdemoapp.jar
       json_key: |
                 {
                   "type": "service_account",
@@ -194,7 +194,6 @@ jobs:
       - put: cf-production
         params: 
           manifest: makemanifest/manifest-production.yml
-          current_app_name: pcfdemoapp
 
   - name: major
     serial_groups: [ version ]

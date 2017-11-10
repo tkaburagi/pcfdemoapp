@@ -63,7 +63,7 @@ inputJar=`find $inputDir -name '*.jar'`
 echo $inputJar
 outputJar="${outputDir}/${baseName}.jar"
 
-echo "Renaming ${inputWar} to ${outputWar}"
+echo "Renaming ${inputJar} to ${outputJar}"
 
 cp ${inputJar} ${outputJar}
 
