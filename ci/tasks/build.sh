@@ -58,7 +58,7 @@ artifactName="${artifactId}-${version}.${packaging}"
 
 cd $inputDir
 set -e
-cd repo
+cd pcfdemoapp
 rm -rf ~/.m2
 ln -fs $(pwd)/m2 ~/.m2
 ./mvnw clean package -Pci -DversionNumber=$version

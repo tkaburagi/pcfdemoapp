@@ -12,7 +12,7 @@ inputs:
   - name: version
 
 caches:
-  - path: repo/m2
+  - path: pcfdemoapp/m2
 
 outputs:
   - name: build

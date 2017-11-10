@@ -5,6 +5,7 @@ resources:
     source:
       uri: {{github-uri}}
       branch: {{github-branch}}
+    check_every: 10s
 
   - name: version
     type: semver

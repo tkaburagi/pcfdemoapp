@@ -11,7 +11,7 @@ inputs:
   - name: pcfdemoapp
 
 caches:
-  - path: repo/m2
+  - path: pcfdemoapp/m2
 
 run:
   path: pcfdemoapp/ci/tasks/unit.sh
