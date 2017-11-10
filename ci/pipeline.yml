@@ -147,13 +147,13 @@ jobs:
         params:
           CF_MANIFEST_HOST: {{cf-manifest-host-prod}}
       - put: final-release
-        params: { file: prepare-final/pcfdemoapp-*.jar }
+        params: { file: prepare-final/pcfdemoapp.jar }
       - put: version
         params: { file: version/number }      
 
   - name: promotion
     plan:
-      - get: candidate-release
+      - get: final-release
         trigger: true
         passed: [ship-it]
       - get: pcfdemoapp
