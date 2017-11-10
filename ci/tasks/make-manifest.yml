@@ -11,7 +11,7 @@ inputs:
   - name: pcfdemoapp
 
 outputs:
-  - name: prepare-final
+  - name: makemanifest
 
 run:
   path: pcfdemoapp/ci/tasks/make-manifest.sh
