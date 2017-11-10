@@ -12,7 +12,7 @@ public class PcfdemoappApplication {
 	@RequestMapping("/")
 	public String hello() {
 		String java_ver = System.getProperty("java.vm.version");
-		String app_ver = "1";
+		String app_ver = "3";
 		String app_index = System.getenv("CF_INSTANCE_INDEX");
 		String app_host = System.getenv("CF_INSTANCE_IP");
 		
