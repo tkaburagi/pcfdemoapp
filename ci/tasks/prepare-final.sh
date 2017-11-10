@@ -75,6 +75,8 @@ echo "Renaming ${inputWar} to ${outputWar}"
 
 cp ${inputJar} ${outputJar}
 
+ls -ltr
+
 outputManifest=$outputDir/manifest-production.yml
 
 cp $inputManifest $outputManifest
