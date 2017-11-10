@@ -45,7 +45,7 @@ resources:
     type: google-cloud-storage
     source:
       bucket: {{gcs-bucket-releases}}
-      regexp: pcfdemoapp.jar
+      regexp: pcfdemoapp-1.jar
       json_key: |
                 {
                   "type": "service_account",
