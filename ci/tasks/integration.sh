@@ -27,7 +27,6 @@ fi
 
 cd $inputDir
 set -e
-cd pcfdemoapp
 rm -rf ~/.m2
 ln -fs $(pwd)/m2 ~/.m2
 ./mvnw clean verify
