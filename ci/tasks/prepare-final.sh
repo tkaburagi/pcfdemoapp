@@ -1,10 +1,8 @@
 #!/bin/bash
 
 baseName="pcfdemoapp"
-inputDir=  outputDir=  inputManifest=  versionFile=  artifactId=  packaging=
+inputDir=  outputDir= versionFile=  artifactId=  packaging=
 
-# optional
-hostname=$CF_MANIFEST_HOST # default to env variable from pipeline
 
 while [ $# -gt 0 ]; do
   case $1 in
@@ -18,10 +16,6 @@ while [ $# -gt 0 ]; do
       ;;
     -v | --version-file )
       versionFile=$2
-      shift
-      ;;
-    -f | --input-manifest )
-      inputManifest=$2
       shift
       ;;
     -a | --artifactId )
@@ -58,9 +52,6 @@ fi
 if [ ! -f "$versionFile" ]; then
   error_and_exit "missing version file: $versionFile"
 fi
-if [ ! -f "$inputManifest" ]; then
-  error_and_exit "missing input manifest: $inputManifest"
-fi
 if [ -z "$artifactId" ]; then
   error_and_exit "missing artifactId!"
 fi
@@ -77,20 +68,4 @@ cp ${inputJar} ${outputJar}
 
 ls -ltrR
 
-outputManifest=$outputDir/manifest-production.yml
-
-cp $inputManifest $outputManifest
-
-# the path in the manifest is always relative to the manifest itself
-sed -i -- "s|path: .*$|path: $outputJar|g" $outputManifest
-
-if [ ! -z "$hostname" ]; then
-  sed -i "s|host: .*$|host: ${hostname}|g" $outputManifest
-fi
-cat $outputManifest
-mv $outputManifest prepare-final
-cat prepare-final/$outputManifest
 mv ${outputJar} prepare-final
-
-pwd
-ls -ltr prepare-final

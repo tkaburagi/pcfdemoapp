@@ -189,6 +189,8 @@ jobs:
         passed: [ship-it]
       - task: make-manifest
         file: pcfdemoapp/ci/tasks/make-manifest.yml
+        params:
+          CF_MANIFEST_HOST: {{cf-manifest-host-prod}}
       - put: cf-production
         params: 
           manifest: pcfdemoapp/manifest-production.yml
