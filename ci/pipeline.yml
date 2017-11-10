@@ -138,11 +138,17 @@ jobs:
       - put: final-release
         params: { file: prepare-final/demo-*.jar }
       - put: version
-        params: { file: version/number }
+        params: { file: version/number }      
+
+  - name: promotion
+    plan:
+      - get: candidate-release
+        passed: [ship-it]
+      - get: pcfdemoapp
+        passed: [ship-it]
       - put: cf-production
-        params:
-          manifest:
-          current_app_name: 
+        params: 
+          manifest: prepare-final/manifest-production.yml
 
   - name: major
     serial_groups: [ version ]
