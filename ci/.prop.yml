@@ -39,4 +39,3 @@ cf-space-staging: "staging"
 cf-space-prod: "production"
 cf-manifest-host-staging: "pcfdemoapp-staging"
 cf-manifest-host-prod: "pcfdemoapp-staging"
-#cf-manifest-host: pcfdemo-ci
