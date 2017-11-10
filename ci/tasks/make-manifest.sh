@@ -1,7 +1,7 @@
 #!/bin/bash
 
 inputDir=  outputDir=  inputManifest=  artifactId=  packaging=
-
+rm pcfdemoapp.jar
 # optional
 hostname=$CF_MANIFEST_HOST # default to env variable from pipeline
 
