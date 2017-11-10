@@ -18,7 +18,7 @@ outputs:
   - name: build
 
 run:
-  path: pcfdemo/ci/tasks/build.sh
+  path: pcfdemoapp/ci/tasks/build.sh
   args: [
     --input-dir, pcfdemoapp,
     --output-dir, build,
