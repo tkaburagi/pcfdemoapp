@@ -1,12 +1,16 @@
 #!/bin/bash
 
-outputDir=  inputManifest=  artifactId=  packaging=
+inputDir=  outputDir=  inputManifest=  artifactId=  packaging=
 
 # optional
 hostname=$CF_MANIFEST_HOST # default to env variable from pipeline
 
 while [ $# -gt 0 ]; do
   case $1 in
+    -i | --input-dir )
+      inputDir=$2
+      shift
+      ;;
     -o | --output-dir )
       outputDir=$2
       shift
@@ -36,6 +40,9 @@ error_and_exit() {
   exit 1
 }
 
+if [ ! -d "$inputDir" ]; then
+  error_and_exit "missing input directory: $inputDir"
+fi
 if [ ! -d "$outputDir" ]; then
   error_and_exit "missing output directory: $outputDir"
 fi
@@ -48,6 +55,8 @@ fi
 if [ -z "$packaging" ]; then
   error_and_exit "missing packaging!"
 fi
+
+cp $inputDir/pcfdemoapp.jar outputDir/pcfdemoapp.jar
 
 outputManifest=$outputDir/manifest-production.yml
 

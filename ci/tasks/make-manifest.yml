@@ -9,6 +9,7 @@ image_resource:
 
 inputs:
   - name: pcfdemoapp
+  - name: final-release
 
 outputs:
   - name: makemanifest
@@ -16,6 +17,7 @@ outputs:
 run:
   path: pcfdemoapp/ci/tasks/make-manifest.sh
   args: [
+    --input-dir, final-release
     --output-dir, makemanifest,
     --input-manifest, pcfdemoapp/manifest-production.yml,
     --artifactId, demo,
