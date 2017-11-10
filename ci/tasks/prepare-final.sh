@@ -73,7 +73,7 @@ outputJar="${outputDir}/${baseName}.jar"
 
 echo "Renaming ${inputWar} to ${outputWar}"
 
-cp ${inputWar} ${outputWar}
+cp ${inputJar} ${outputJar}
 
 outputManifest=$outputDir/manifest-production.yml
 

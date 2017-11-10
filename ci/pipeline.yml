@@ -124,6 +124,14 @@ jobs:
       - task: integration
         file: pcfdemoapp/ci/tasks/integration.yml
 
+  # - name: load-test
+  #     - get: pcfdemoapp
+  #       passed: [ integration-test ]
+  #     - get: candidate-release
+  #       passed: [ integration-test ]
+  #       trigger: true
+  #     - task: load-test
+
   - name: ship-it
     serial_groups: [ version ]
     plan:
@@ -139,9 +147,9 @@ jobs:
         params:
           CF_MANIFEST_HOST: {{cf-manifest-host-prod}}
       - put: final-release
-        params: { file: prepare-final/demo-*.jar }
+        params: { file: prepare-final/pcfdemoapp-*.jar }
       - put: version
-        params: { file: version/number }
+        params: { file: version/number }      
 
   - name: promotion
     plan:
