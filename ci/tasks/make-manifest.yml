@@ -14,7 +14,7 @@ outputs:
   - name: prepare-final
 
 run:
-  path: pcfdemoapp/ci/tasks/prepare-final.sh
+  path: pcfdemoapp/ci/tasks/make-manifest.sh
   args: [
     --output-dir, makemanifest,
     --input-manifest, pcfdemoapp/manifest-production.yml,

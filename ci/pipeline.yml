@@ -168,12 +168,11 @@ jobs:
         trigger: true
       - get: pcfdemoapp
         passed: [ load-test ]
+        trigger: true
       - get: version
         params: { bump: final }
       - task: prepare-final
         file: pcfdemoapp/ci/tasks/prepare-final.yml
-        params:
-          CF_MANIFEST_HOST: {{cf-manifest-host-prod}}
       - put: final-release
         params: { file: prepare-final/pcfdemoapp.jar }
       - put: version
@@ -187,6 +186,7 @@ jobs:
         passed: [ship-it]
       - get: pcfdemoapp
         passed: [ship-it]
+        trigger: true
       - task: make-manifest
         file: pcfdemoapp/ci/tasks/make-manifest.yml
         params:
