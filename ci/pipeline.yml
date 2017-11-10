@@ -120,7 +120,7 @@ jobs:
           CF_MANIFEST_HOST: {{cf-manifest-host}}
       - put: cf-staging
         params:
-          manifest: prepare-integration/manifest.yml
+          manifest: prepare-integration/manifest-staging.yml
       - task: integration
         file: pcfdemoapp/ci/tasks/integration.yml
 
