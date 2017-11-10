@@ -193,7 +193,7 @@ jobs:
           CF_MANIFEST_HOST: {{cf-manifest-host-prod}}
       - put: cf-production
         params: 
-          manifest: pcfdemoapp/manifest-production.yml
+          manifest: makemanifest/manifest-production.yml
           current_app_name: pcfdemoapp
 
   - name: major

@@ -95,4 +95,5 @@ fi
 
 pwd
 
+ls -ltr
 cat $outputManifest
