@@ -145,20 +145,20 @@ jobs:
               args:
               - -c
               - |
-                # sleep 10
-                # i=0
-                # while [[ $i -ne 10 ]]; do
-                #   code=`curl -LI http://pcfdemoapp-staging.apps.kabdev.xyz -o /dev/null -w '%{http_code}\n' -s`;
-                #   if [[ ${code} = "200" ]]; then
-                #       echo ${code};
-                #     echo "ok";
-                #   else
-                #     echo "abort!!";
-                #     exit 1
-                #   fi
-                #   i=`expr $i + 1`;
-                #   sleep 1;
-                # done
+                 sleep 10
+                 i=0
+                 while [[ $i -ne 10 ]]; do
+                   code=`curl -LI http://pcfdemoapp-staging.apps.kabdev.xyz -o /dev/null -w '%{http_code}\n' -s`;
+                   if [[ ${code} = "200" ]]; then
+                       echo ${code};
+                     echo "ok";
+                   else
+                     echo "abort!!";
+                     exit 1
+                   fi
+                   i=`expr $i + 1`;
+                   sleep 1;
+                 done
 
   - name: ship-it
     serial_groups: [ version ]
@@ -196,6 +196,7 @@ jobs:
       - put: cf-production
         params: 
           manifest: makemanifest/manifest-production.yml
+          current_app_name: pcfdemoapp
 
   - name: major
     serial_groups: [ version ]
