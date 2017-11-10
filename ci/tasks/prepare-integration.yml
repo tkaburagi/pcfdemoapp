@@ -19,7 +19,7 @@ outputs:
   - name: prepare-integration
 
 run:
-  path: pcfdemo/ci/tasks/prepare-integration.sh
+  path: pcfdemoapp/ci/tasks/prepare-integration.sh
   args: [
     --input-dir, candidate-release,
     --output-dir, prepare-integration,

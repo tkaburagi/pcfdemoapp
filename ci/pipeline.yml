@@ -18,10 +18,10 @@ resources:
     source:
       driver: git
       uri: git@github.com:tkaburagi1214/pcfdemoapp-version.git
-      brach: master
+      branch: master
       private_key: ((github-private-key))
       file: version
-      
+
   - name: candidate-release
     type: google-cloud-storage
     source:
