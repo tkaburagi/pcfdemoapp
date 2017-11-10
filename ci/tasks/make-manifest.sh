@@ -60,8 +60,6 @@ if [ ! -z "$hostname" ]; then
   sed -i "s|host: .*$|host: ${hostname}|g" $outputManifest
 fi
 cat $outputManifest
-mv $outputManifest makemanifest
-cat makemanifest/$outputManifest
 
 pwd
-ls -ltr prepare-final
+ls -ltr makemanifest
