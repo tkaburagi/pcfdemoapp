@@ -62,6 +62,8 @@ rm -rf ~/.m2
 ln -fs $(pwd)/m2 ~/.m2
 ./mvnw clean package -Pci -DversionNumber=$version
 
+ls -ltr $inputDir/target
+
 # Copy war file to concourse output folder
 cd ..
 cp $inputDir/target/$artifactName $outputDir/$artifactName
