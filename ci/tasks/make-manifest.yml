@@ -10,6 +10,7 @@ image_resource:
 inputs:
   - name: pcfdemoapp
   - name: final-release
+  - name: version
 
 outputs:
   - name: makemanifest
@@ -21,5 +22,6 @@ run:
     --output-dir, makemanifest,
     --input-manifest, pcfdemoapp/manifest-production.yml,
     --artifactId, demo,
-    --packaging, jar
+    --packaging, jar,
+    --version-file, version/number
   ]

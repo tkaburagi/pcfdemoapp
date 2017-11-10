@@ -61,7 +61,7 @@ fi
 
 inputJar=`find $inputDir -name '*.jar'`
 echo $inputJar
-outputJar="${outputDir}/${baseName}.jar"
+outputJar="${outputDir}/${baseName}-${versionFile}.jar"
 
 echo "Renaming ${inputJar} to ${outputJar}"
 
