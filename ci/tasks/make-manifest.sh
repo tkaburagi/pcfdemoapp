@@ -56,7 +56,7 @@ if [ -z "$packaging" ]; then
   error_and_exit "missing packaging!"
 fi
 
-cp $inputDir/pcfdemoapp.jar outputDir/pcfdemoapp.jar
+cp $inputDir/pcfdemoapp.jar $outputDir/pcfdemoapp.jar
 
 outputManifest=$outputDir/manifest-production.yml
 
