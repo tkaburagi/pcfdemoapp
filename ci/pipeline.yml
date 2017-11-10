@@ -124,22 +124,49 @@ jobs:
       - task: integration
         file: pcfdemoapp/ci/tasks/integration.yml
 
-  # - name: load-test
-  #     - get: pcfdemoapp
-  #       passed: [ integration-test ]
-  #     - get: candidate-release
-  #       passed: [ integration-test ]
-  #       trigger: true
-  #     - task: load-test
-
-  - name: ship-it
-    serial_groups: [ version ]
+  - name: load-test
+    serial: true
     plan:
       - get: candidate-release
         passed: [ integration-test ]
         trigger: true
       - get: pcfdemoapp
-        passed: [ integration-test ]
+        passed: [ build-artifact ]
+      - task: load-test
+        config:
+            platform: linux
+            image_resource:
+              type: docker-image
+              source:
+                repository: appropriate/curl
+            run:
+              path: sh
+              args:
+              - -c
+              - |
+                sleep 10
+                i=0
+                while [[ $i -ne 10 ]]; do
+                  code=`curl -LI http://pcfdemoapp-staging.apps.kabdev.xyz -o /dev/null -w '%{http_code}\n' -s`;
+                  if [[ ${code} = "200" ]]; then
+                      echo ${code};
+                    echo "ok";
+                  else
+                    echo "abort!!";
+                    exit 1
+                  fi
+                  i=`expr $i + 1`;
+                  sleep 1;
+                done
+
+  - name: ship-it
+    serial_groups: [ version ]
+    plan:
+      - get: candidate-release
+        passed: [ load-test ]
+        trigger: true
+      - get: pcfdemoapp
+        passed: [ load-test ]
       - get: version
         params: { bump: final }
       - task: prepare-final
@@ -160,7 +187,7 @@ jobs:
         passed: [ship-it]
       - put: cf-production
         params: 
-          manifest: prepare-final/manifest-production.yml
+          manifest: pcfdemoapp/manifest-production.yml
           current_app_name: pcfdemoapp
 
   - name: major
