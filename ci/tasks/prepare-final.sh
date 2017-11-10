@@ -60,6 +60,7 @@ if [ -z "$packaging" ]; then
 fi
 
 inputJar=`find $inputDir -name '*.jar'`
+echo $inputJar
 outputJar="${outputDir}/${baseName}.jar"
 
 echo "Renaming ${inputWar} to ${outputWar}"
