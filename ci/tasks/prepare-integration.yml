@@ -11,7 +11,7 @@ image_resource:
 #   CF_MANIFEST_HOST:
 
 inputs:
-  - name: pcfdemo
+  - name: pcfdemoapp
   - name: candidate-release
   - name: version
 
