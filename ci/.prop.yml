@@ -1,5 +1,33 @@
 github-uri: https://github.com/tkaburagi1214/pcfdemoapp.git  # Change this to your fork
 github-branch: master
+github-private-key: |
+   -----BEGIN RSA PRIVATE KEY-----
+   MIIEogIBAAKCAQEAt+FEpWzffT/jAGlUVj7EK8ATYCy2nFz5iPP2cM5JeRzU/dHA
+   yjY7AMMjtd7wciY9Sg+Yha6ojegy7kBGimElS1QEtX7/h5PcwmRFqzqFpd6vZcG9
+   QwaiGRPSX9raIB4prOnSuv2M2DLrupPzW1GPlnchEvk8G4PJHT3EjAmUvW7pMtBE
+   VJmUklwsnIsiVIUv+6PyzRKOtFbGVCXDQExpxGiN2XRbqYXwA6ZG9pvHdh/ruF8G
+   rLry7ey2tSRNI6cibS1RHZkzeOTBvteBj8G8j/BYKITs35hRSx7LKgHDi+FlN9GR
+   6BsErg2kqSWC5K60OPHVpBHez4iHJOVzPrmJ8QIDAQABAoIBACQSzH3LmxieRPFa
+   uJHm5GNU3jg67WRFlSq5+bntrlpVPq/Ay5qgAvlGTyYp42/xcoqp/pkTR7v3Nq6o
+   623QWxmpFPdqP8UgS+nS9BwAciG1SyGiXXfdwEU9L0Ng0vQEFtb2VEIc5dmwO7Cx
+   v8dFe+7f1hw7yv/23aif6oQyiPyUhRMiXYNZZFkKhJPhg6q/UtHbfWUECPzLtv6+
+   Xqyk5sCvUBd6u+QCd1aivW7lgK0A9y1tg+IANAgb30XVnyKWDL9ktEwNV2Wh3euZ
+   a1LZG2IBGTn53COX3GvM29ZkgOP1NCNo6XdfR7I1PbolV/KUEaiaJlo0AnJAokBG
+   FNlPN1UCgYEA8KmMazfPxE8upm0+tDJXonRQUOmC+QT7ym+V5pD0MbkFaqsNAhQb
+   ZAZ0aPZdUNq563jIuYFqpe+lIMCwL5MxECuwubqdSuolklDnD6b0XfLi0UE0Pkg9
+   iiWAa4VTEbh7sqtNo5C+7nd7EzHhEPnicAIWnoaXm2gh3Q3fGjI1NDsCgYEAw5lO
+   B6GKAPT4ApUz8sH3cUVVmTzBTaEVvIu12DRhcytiKo12wQIa5QK1a4SdpeLoPMVg
+   olwI9TKwLCHLNVB7gB4ilBD599SCyH+dHhjmQRAXR2ekWN0p6kwU7tIX5oWaD/Xs
+   yVw5HwEXiZLDdR/cfU5+sDBdwdsGSJYDPT6xM8MCgYBvgzCEccz8um/0P8SBPJ5s
+   sRaSF1FPz6ZYC9JajqoH7CJ9ZZrWbriuZWtFQ3rDv0XMvR/NDRF8qAlMntxEfyCJ
+   zKTLupOtpccZABHAp+ytJ6E/ssXhYhnZzDywFYwDNwdiJ4wHEUfXOVe28jLGafMp
+   UV5nwBe5s8uVIRtSiRcsBwKBgHwvNDxiEmVjIqc5JX9GKRzwYVVmHnB0CoHnze9T
+   6l8dtzi/Ehueg4bMvnRiAVlWBA65Xg4XEtTidrm+Ru81hwOjnl6VnK79bH9xjkaS
+   lnXOiokaQ1zsJfWMkmnCV8xTHKpvgAOkGtwVbGU7Gf+d1/ZyxLqGKrCup4GkRLA4
+   wnbTAoGATXtnpPnLLayJkJD1wUiaXuTlGixREQitSynBVBXUBZQZctaRf4dam3Ji
+   bsfJ6PpuirCSDQumUBp8qORYOZoLmsLj6mJjfvOKDVu1N+/bnZtDK1TsCFXVQ5hr
+   IeH+PFFJjRQyLuf2oTAPcJ/huOMqYzonikDIwfZlEahDGFnh4KI=
+   -----END RSA PRIVATE KEY-----
 gcs-bucket-release-candidates: pcfdemoapp-release-candidates
 gcs-bucket-releases: pcfdemoapp-releases
 gcs-bucket-version: pcfdemoapp-version
