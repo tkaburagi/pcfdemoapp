@@ -5,7 +5,7 @@ applications:
   host: pcfdemoapp
   domain: apps.kabdev.xyz
   instances: 1
-  path: pcfdemoapp.jar
+  path: makemanifest/pcfdemoapp.jar
 #  buildpack: java_buildpack
   env:
    management.security.enabled: false
