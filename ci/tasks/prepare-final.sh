@@ -67,5 +67,3 @@ echo "Renaming ${inputWar} to ${outputWar}"
 cp ${inputJar} ${outputJar}
 
 ls -ltrR
-
-mv ${outputJar} prepare-final
