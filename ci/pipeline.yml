@@ -141,7 +141,7 @@ jobs:
       - put: final-release
         params: { file: prepare-final/demo-*.jar }
       - put: version
-        params: { file: version/number }      
+        params: { file: version/number }
 
   - name: promotion
     plan:
