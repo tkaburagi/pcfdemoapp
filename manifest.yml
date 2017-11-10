@@ -2,8 +2,8 @@
 applications:
 - name: pcfdemoapp
   memory: 1G
-  host: pcfdemoapp
-  domain: cfapps.io
+  host: pcfdemoapp-staging
+  domain: kabdev.xyz
   instances: 1
   path: target/demo-0.0.1-SNAPSHOT.jar
 #  buildpack: java_buildpack
