@@ -16,6 +16,7 @@ resources:
   - name: version
     type: semver
     source:
+      driver: gcs
       bucket: {{gcs-bucket-version}}
       initial_version: 1.0.0-rc.0
       key: current-version
