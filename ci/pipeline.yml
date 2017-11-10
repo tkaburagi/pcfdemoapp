@@ -188,7 +188,7 @@ jobs:
         passed: [ship-it]
       - put: cf-production
         params: 
-          manifest: pcfdemoapp/manifest-production.yml
+          manifest: prepare-final/manifest-production.yml
           current_app_name: pcfdemoapp
 
   - name: major
