@@ -62,14 +62,14 @@ fi
 if [ ! -f "$versionFile" ]; then
   error_and_exit "missing version file: $versionFile"
 fi
-cp $inputDir/pcfdemoapp-`${versionFile}`.jar $outputDir/pcfdemoapp-`${versionFile}`.jar
+cp $inputDir/pcfdemoapp-`${versionFile}`.jar $outputDir/pcfdemoapp-`cat ${versionFile}`.jar
 
 outputManifest=$outputDir/manifest-production.yml
 
 cp $inputManifest $outputManifest
 
 # the path in the manifest is always relative to the manifest itself
-sed -i -- "s|path: .*$|path: pcfdemoapp-`${versionFile}`.jar|g" $outputManifest
+sed -i -- "s|path: .*$|path: pcfdemoapp-`cat ${versionFile}`.jar|g" $outputManifest
 
 if [ ! -z "$hostname" ]; then
   sed -i "s|host: .*$|host: ${hostname}|g" $outputManifest
