@@ -18,9 +18,9 @@ outputs:
 run:
   path: pcfdemoapp/ci/tasks/prepare-final.sh
   args: [
-    "--input-dir", "candidate-release",
-    "--output-dir", "prepare-final",
-    "--version-file", "version/number"
+    --input-dir, candidate-release",
+    --output-dir, prepare-final",
+    --version-file, "version/number",
     --input-manifest, pcfdemoapp/manifest-production.yml,
     --artifactId, demo,
     --packaging, jar
