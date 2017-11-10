@@ -7,9 +7,6 @@ image_resource:
     repository: java
     tag: '8'
 
-# params:
-#   CF_MANIFEST_HOST:
-
 inputs:
   - name: pcfdemoapp
   - name: candidate-release

@@ -117,7 +117,7 @@ jobs:
       - task: prepare-integration
         file: pcfdemoapp/ci/tasks/prepare-integration.yml
         params:
-          CF_MANIFEST_HOST: {{cf-manifest-host}}
+          CF_MANIFEST_HOST: {{cf-manifest-host-staging}}
       - put: cf-staging
         params:
           manifest: prepare-integration/manifest-staging.yml
@@ -129,12 +129,15 @@ jobs:
     plan:
       - get: candidate-release
         passed: [ integration-test ]
+        trigger: true
       - get: pcfdemoapp
         passed: [ integration-test ]
       - get: version
         params: { bump: final }
       - task: prepare-final
         file: pcfdemoapp/ci/tasks/prepare-final.yml
+        params:
+          CF_MANIFEST_HOST: {{cf-manifest-host-prod}}
       - put: final-release
         params: { file: prepare-final/demo-*.jar }
       - put: version
@@ -143,12 +146,14 @@ jobs:
   - name: promotion
     plan:
       - get: candidate-release
+        trigger: true
         passed: [ship-it]
       - get: pcfdemoapp
         passed: [ship-it]
       - put: cf-production
         params: 
           manifest: prepare-final/manifest-production.yml
+        current_app_name: pcfdemoapp
 
   - name: major
     serial_groups: [ version ]
