@@ -1,2 +1,3 @@
 .concourse/
 first-push.sh
+init-env.sh
