@@ -3,7 +3,7 @@ applications:
 - name: pcfdemoapp
   memory: 1G
   host: pcfdemoapp
-  domain: apps.kabdev.xyz
+  domain: apps.pcflab.jp
   instances: 1
   path: target/pcfdemoapp.jar
 #  buildpack: java_buildpack
